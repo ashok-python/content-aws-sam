@@ -12,7 +12,7 @@ table_name = ""
 
 
 def wait_for_table_active():
-    client = boto3.client("dynamodb")
+    client = boto3.client("dynamodb",region_name='us-east-1')
     print(f"Waiting for table {table_name} to finish creating...")
     waiter = client.get_waiter("table_exists")
     waiter.wait(TableName=table_name)
